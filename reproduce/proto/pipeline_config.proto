@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "pipeline_spec.proto";
+
+package reproduce.config;
+
+// Kubeflow V2 Config
+// This config usually used for managed pipeline cluster like Vertex AI.
+message KubeflowV2Config {
+    // The key is component name and the value is the component's resource specs.
+    map<string, ComponentResourceSpec> component_resource_specs = 1;
+}
+
+
+// The specification on a container invocation for pipeline.
+// https://github.com/kubeflow/pipelines/blob/2.0.0b6/api/v2alpha1/pipeline_spec.proto#L639-L720
+message ComponentResourceSpec {
+    // The specification on the resource requirements of a container execution.
+    // This can include specification of vCPU, memory requirements and this specification
+    // determines the nodepool of the container.
+    // https://github.com/kubeflow/pipelines/blob/2.0.0b6/api/v2alpha1/pipeline_spec.proto#L677-L698
+    optional ml_pipelines.PipelineDeploymentConfig.PipelineContainerSpec.ResourceSpec resources = 1;
+
+    // Environment variables to be passed to the container.
+    // Represents an environment variable present in a container.
+    // https://github.com/kubeflow/pipelines/blob/2.0.0b6/api/v2alpha1/pipeline_spec.proto#L700-L719
+    repeated ml_pipelines.PipelineDeploymentConfig.PipelineContainerSpec.EnvVar env = 2;
+}

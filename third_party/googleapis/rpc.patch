@@ -1,0 +1,19 @@
+diff --git a/google/rpc/BUILD.bazel b/google/rpc/BUILD.bazel
+index 8ffa5a49c..819e83862 100644
+--- a/google/rpc/BUILD.bazel
++++ b/google/rpc/BUILD.bazel
+@@ -121,7 +121,12 @@ py_proto_library(
+     deps = [":error_details_proto"],
+ )
+
++load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
++
+ py_proto_library(
+-    name = "status_py_proto",
+-    deps = [":status_proto"],
++    name = "status_proto_py_pb2",
++    srcs = [":status.proto"],
++    deps = [
++        "@com_google_protobuf//:protobuf_python",
++    ],
+ )
