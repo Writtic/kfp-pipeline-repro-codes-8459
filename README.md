@@ -21,7 +21,7 @@ python main.py
 ### Expected result
 
 Using `py_proto_library()` from com_google_protobuf, I hope to use the part of pipeline_spec.proto on [kubeflow/pipelines](https://github.com/kubeflow/pipelines) for reusability and integrity.
-However, [kubeflow/pipelines](https://github.com/kubeflow/pipelines) doesn't support bazel build, so I can't use as it is.
+However, [kubeflow/pipelines](https://github.com/kubeflow/pipelines) has different package path from protobuf path, so I can't use as it is.
 
 Due to this, I add the dependancy of [kubeflow/pipelines](https://github.com/kubeflow/pipelines) and bazel patches, build file for [kubeflow/pipelines](https://github.com/kubeflow/pipelines).
 
